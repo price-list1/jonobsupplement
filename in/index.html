@@ -41,7 +41,7 @@
 
         /* قاب مربع با حاشیه‌های خمیده (border-radius) */
         .card {
-            max-width: 420px;
+            max-width: 450px;
             width: 100%;
             background: rgba(255, 248, 235, 0.97);
             backdrop-filter: blur(0px);
@@ -52,27 +52,49 @@
             text-align: center;
         }
 
-        /* محفظه عکس: مربعی با حاشیه خمیده */
+        /* محفظه عکس: مربعی با حاشیه خمیده + انیمیشن بالا پایین */
         .image-frame {
-            width: 220px;
-            height: 220px;
+            width: 260px;                /* بزرگ‌تر شد از 220 به 260 */
+            height: 260px;               /* بزرگ‌تر شد از 220 به 260 */
             margin: 0 auto 20px auto;
-            border-radius: 38px;           /* مربع با انحنای یکسان (حاشیه خمیده) */
+            border-radius: 45px;         /* حاشیه خمیده متناسب با اندازه جدید */
             overflow: hidden;
             background: #e9e2d4;
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,240,0.6);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,240,0.6);
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid #ffc96e;
+            border: 3px solid #ffc96e;
+            
+            /* انیمیشن بالا و پایین رفتن نرم */
+            animation: floatAnimation 2.5s ease-in-out infinite;
         }
 
-        /* استایل عکس: کاملاً در قاب قرار می‌گیرد، اعوجاج نداشته باشد */
+        /* تعریف انیمیشن شناور (بالا و پایین) */
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);  /* حرکت به سمت بالا */
+            }
+            100% {
+                transform: translateY(0px);     /* بازگشت به جای اول */
+            }
+        }
+
+        /* استایل عکس: بزرگ‌تر و با کیفیت */
         .product-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;          /* عکس کل فضا را می‌پوشاند بدون تغییر نسبت */
+            object-fit: cover;          /* عکس کل فضا را می‌پوشاند - بزرگ دیده می‌شود */
             display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        /* افکت کوچک هنگام هاور (دلخواه - اگر موس روی عکس برود کمی بزرگتر شود) */
+        .image-frame:hover .product-img {
+            transform: scale(1.02);
         }
 
         /* دکمه لیست قیمت */
@@ -124,7 +146,9 @@
             gap: 5px;
             font-size: 0.7rem;
             letter-spacing: 0.2px;
-        }/* آیکون‌های ساده یونیکد برای واتساپ، روبیکا و تلفن */
+        }
+
+        /* آیکون‌های ساده یونیکد برای واتساپ، روبیکا و تلفن */
         .social-mini span:first-child::before {
             content: "📱 ";
             font-size: 0.8rem;
@@ -157,15 +181,16 @@
             color: #b45f1b;
         }
 
-        /* برای حالت موبایل، اگر نمایشگر خیلی کوچک باشد قاب کمی فشرده‌تر شود */
+        /* برای حالت موبایل، اگر نمایشگر خیلی کوچک باشد */
         @media (max-width: 480px) {
             .card {
                 padding: 20px 18px 28px 18px;
                 border-radius: 40px;
             }
             .image-frame {
-                width: 180px;
-                height: 180px;
+                width: 210px;           /* در موبایل کمی کوچکتر اما همچنان بزرگتر از قبل */
+                height: 210px;
+                border-radius: 38px;
             }
             .price-btn {
                 font-size: 1.3rem;
@@ -180,13 +205,12 @@
             }
         }
 
-        /* نکته: غیرفعال کردن هرگونه اسکرول (دوباره تأکید) */
+        /* نکته: غیرفعال کردن هرگونه اسکرول */
         body, html {
             overflow: hidden;
             position: fixed;
         }
         
-        /* اگر داخل کارت محتوا از ارتفاع دید خارج شود - اما با اندازه ثابت نه */
         .card {
             max-height: 90vh;
             overflow-y: visible;
@@ -201,18 +225,23 @@
 
 <div class="container">
     <div class="card">
-        <!-- قاب مربعی حاشیه خمیده + عکس -->
+        <!-- قاب مربعی حاشیه خمیده + عکس + انیمیشن بالا پایین -->
         <div class="image-frame">
-          
+            <!-- 
+                =========================================================
+                جای عکس: آدرس تصویر خود را در قسمت src قرار دهید.
+                عکس بزرگ‌تر دیده می‌شود چون کادر 260x260 شده.
+                =========================================================
+            -->
             <img class="product-img" src="logo.png" alt="مکمل ورزشی" id="userImage">
-            
+            <!-- ↑ در src بالا آدرس تصویر خود را جایگزین کنید ↑ -->
         </div>
 
         <!-- دکمه لیست قیمت (با قابلیت دانلود PDF) -->
         <button class="price-btn" id="priceListBtn">📋 لیست قیمت</button>
 
-        <!-- متن ریز برای واتساپ، روبیکا و شماره فروشگاه (دقیقاً زیر دکمه) -->
-        <div class="social-mini">
+        <!-- متن ریز برای واتساپ، روبیکا و شماره فروشگاه -->
+         <div class="social-mini">
             <span>واتساپ : 2122 122 0939</span>
             <span>روبیکا : JONUB_SUPPLEMENT</span>
             <span>شماره فروشگاه : 9147 313 0773</span>
@@ -229,29 +258,29 @@
 <script>
     (function() {
         // دکمه لیست قیمت: با کلیک، فایل PDF دانلود می‌شود
-
         const priceBtn = document.getElementById('priceListBtn');
         
         // تابع دانلود فایل PDF
         function downloadPricePDF() {
-           
+            // ==============================================================
+            // لطفا آدرس دقیق فایل PDF لیست قیمت خود را در متغیر زیر وارد کنید
+            // ==============================================================
             const pdfUrl = "price_list.pdf";  // <--- آدرس PDF خود را اینجا قرار دهید
             
             // ایجاد یک عنصر <a> مخفی برای دانلود
             const link = document.createElement('a');
             link.href = pdfUrl;
-            link.download = "لیست_قیمت_مکمل.pdf";  // نام فایل هنگام ذخیره شدن
+            link.download = "لیست_قیمت_مکمل.pdf";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
         
-        // اختصاص رویداد کلیک به دکمه
         if (priceBtn) {
             priceBtn.addEventListener('click', downloadPricePDF);
         }
         
-        console.log("صفحه آماده است - اطلاعات فروشگاه به روز شد.");
+        console.log("صفحه آماده است - کادر لوگو با انیمیشن بالا پایین و بزرگ‌تر");
     })();
 </script>
 
