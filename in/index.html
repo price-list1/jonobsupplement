@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>مکمل جنوب</title>
+    <title>مکمل فروشی | صفحه ثابت</title>
     <style>
         /* ریست حاشیه‌ها و فاصله‌ها */
         * {
@@ -100,37 +100,61 @@
             box-shadow: 0 2px 0 0 #7e4a1a;
         }
 
-        /* بخش آیکون‌های واتساپ و روبیکا (خیلی ریز) */
+        /* بخش آیکون‌های واتساپ و روبیکا و شماره فروشگاه (خیلی ریز) */
         .social-mini {
             margin-top: 8px;
             display: flex;
             justify-content: center;
-            gap: 28px;
-            font-size: 0.7rem;          /* خیلی ریز ولی خوانا */
+            gap: 20px;
+            font-size: 0.68rem;
             color: #4a3b2a;
             background: #fff8ef;
-            padding: 8px 14px;
+            padding: 8px 12px;
             border-radius: 50px;
             display: inline-flex;
             width: auto;
             backdrop-filter: blur(2px);
             font-weight: 500;
+            flex-wrap: wrap;
         }
 
         .social-mini span {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.72rem;
-            letter-spacing: 0.3px;
-        }/* آیکون‌های ساده یونیکد برای واتساپ و روبیکا */
+            gap: 5px;
+            font-size: 0.7rem;
+            letter-spacing: 0.2px;
+        }/* آیکون‌های ساده یونیکد برای واتساپ، روبیکا و تلفن */
         .social-mini span:first-child::before {
             content: "📱 ";
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
-        .social-mini span:last-child::before {
+        .social-mini span:nth-child(2)::before {
             content: "📘 ";
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+        }
+        .social-mini span:nth-child(3)::before {
+            content: "🏪 ";
+            font-size: 0.8rem;
+        }
+
+        /* ساعت پشتیبانی فروش */
+        .support-hours {
+            margin-top: 16px;
+            font-size: 0.7rem;
+            color: #6b4e2e;
+            background: #fdf3e4;
+            padding: 8px 12px;
+            border-radius: 30px;
+            display: inline-block;
+            width: auto;
+            font-weight: 500;
+            border: 1px solid #eeddbb;
+        }
+        
+        .support-hours span {
+            font-weight: bold;
+            color: #b45f1b;
         }
 
         /* برای حالت موبایل، اگر نمایشگر خیلی کوچک باشد قاب کمی فشرده‌تر شود */
@@ -148,7 +172,10 @@
                 width: 90%;
             }
             .social-mini {
-                gap: 18px;
+                gap: 14px;
+                font-size: 0.6rem;
+            }
+            .support-hours {
                 font-size: 0.65rem;
             }
         }
@@ -165,7 +192,6 @@
             overflow-y: visible;
         }
 
-        /* استایل دکمه برای لینک دانلود فایل PDF */
         button {
             user-select: none;
         }
@@ -177,29 +203,25 @@
     <div class="card">
         <!-- قاب مربعی حاشیه خمیده + عکس -->
         <div class="image-frame">
-            <!-- 
-                =========================================================
-                جای عکس: آدرس تصویر خود را در قسمت src قرار دهید.
-                توصیه می‌شود عکسی با نسبت 1:1 (مربعی) و کیفیت خوب.
-                مثال: 
-                src="images/product.jpg"
-                یا اگر در پوشه فعلی: src="supplement.png"
-                =========================================================
-            -->
-            <img class="product-img" src="logo.png" id="userImage">
-            <!-- ↑ در src بالا آدرس تصویر خود را جایگزین کنید ↑ -->
+          
+            <img class="product-img" src="logo.png" alt="مکمل ورزشی" id="userImage">
+            
         </div>
 
         <!-- دکمه لیست قیمت (با قابلیت دانلود PDF) -->
         <button class="price-btn" id="priceListBtn">📋 لیست قیمت</button>
 
-        <!-- متن ریز برای واتساپ و روبیکا (دقیقاً زیر دکمه) -->
+        <!-- متن ریز برای واتساپ، روبیکا و شماره فروشگاه (دقیقاً زیر دکمه) -->
         <div class="social-mini">
-            <PRE>واتساپ : 2122 122 0939</PRE>
-            <span>روبیکا : @JONUB_SUPPLEMENTS</span>
+            <span>واتساپ : 2122 122 0939</span>
+            <span>روبیکا : JONUB_SUPPLEMENT</span>
+            <span>شماره فروشگاه : ۰۷۷۳ ۳۱۳ ۹۱۴۷</span>
         </div>
         
-        <!-- بخش پشتیبانی و ساعت کار کاملاً حذف شد -->
+        <!-- ساعت پشتیبانی فروش (9:30-2 و 17:30-20) -->
+        <div class="support-hours">
+            🕘 ساعت پشتیبانی فروش : <span>۹:۳۰ تا ۱۴</span> و <span>۱۷:۳۰ تا ۲۰</span>
+        </div>
         
     </div>
 </div>
@@ -207,13 +229,12 @@
 <script>
     (function() {
         // دکمه لیست قیمت: با کلیک، فایل PDF دانلود می‌شود
+
         const priceBtn = document.getElementById('priceListBtn');
         
         // تابع دانلود فایل PDF
         function downloadPricePDF() {
-            // ==============================================================
-            // لطفا آدرس دقیق فایل PDF لیست قیمت خود را در متغیر زیر وارد کنید
-            // ==============================================================
+           
             const pdfUrl = "price_list.pdf";  // <--- آدرس PDF خود را اینجا قرار دهید
             
             // ایجاد یک عنصر <a> مخفی برای دانلود
@@ -230,21 +251,10 @@
             priceBtn.addEventListener('click', downloadPricePDF);
         }
         
-        // تست وجود فایل PDF (در صورت 404 خطا در کنسول دیده می‌شود اما صفحه نمی‌شکند)
-        console.log("صفحه آماده است - دکمه لیست قیمت فایل PDF را دانلود می‌کند.");
+        console.log("صفحه آماده است - اطلاعات فروشگاه به روز شد.");
     })();
 </script>
 
-<!-- راهنمای تنظیم فایل PDF:1. فایل PDF لیست قیمت خود را در همان پوشه فایل HTML قرار دهید.
-     2. نام فایل را "price-list.pdf" بگذارید (یا نام دیگر، سپس در کد تغییر دهید).
-     3. مثال: اگر فایل شما "prices.pdf" است، در خط 179 مقدار را به "prices.pdf" تغییر دهید.
-     
-     برای تست در مرورگر:
-     - اگر فایل PDF وجود نداشته باشد، دانلود انجام نمی‌شود و خطا در کنسول می‌آید.
-     - لطفاً حتماً فایل PDF را در کنار فایل HTML آپلود کنید.
-     
-     اگر فایل PDF در هاست در مسیر دیگری قرار دارد، آدرس کامل را وارد کنید:
-     مثال: "https://example.com/files/price-list.pdf"
--->
+
 </body>
 </html>
