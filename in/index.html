@@ -66,21 +66,7 @@
             justify-content: center;
             border: 3px solid #ffc96e;
             
-            /* انیمیشن بالا و پایین رفتن نرم */
-            animation: floatAnimation 2.5s ease-in-out infinite;
-        }
-
-        /* تعریف انیمیشن شناور (بالا و پایین) */
-        @keyframes floatAnimation {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);  /* حرکت به سمت بالا */
-            }
-            100% {
-                transform: translateY(0px);     /* بازگشت به جای اول */
-            }
+   
         }
 
         /* استایل عکس: بزرگ‌تر و با کیفیت */
@@ -89,7 +75,6 @@
             height: 100%;
             object-fit: cover;          /* عکس کل فضا را می‌پوشاند - بزرگ دیده می‌شود */
             display: block;
-            transition: transform 0.3s ease;
         }
         
         /* افکت کوچک هنگام هاور (دلخواه - اگر موس روی عکس برود کمی بزرگتر شود) */
@@ -225,22 +210,16 @@
 
 <div class="container">
     <div class="card">
-        <!-- قاب مربعی حاشیه خمیده + عکس + انیمیشن بالا پایین -->
+    
         <div class="image-frame">
-            <!-- 
-                =========================================================
-                جای عکس: آدرس تصویر خود را در قسمت src قرار دهید.
-                عکس بزرگ‌تر دیده می‌شود چون کادر 260x260 شده.
-                =========================================================
+    
             -->
             <img class="product-img" src="logo.png" alt="مکمل ورزشی" id="userImage">
-            <!-- ↑ در src بالا آدرس تصویر خود را جایگزین کنید ↑ -->
+          
         </div>
 
-        <!-- دکمه لیست قیمت (با قابلیت دانلود PDF) -->
         <button class="price-btn" id="priceListBtn">📋 لیست قیمت</button>
 
-        <!-- متن ریز برای واتساپ، روبیکا و شماره فروشگاه -->
          <div class="social-mini">
             <span>واتساپ : 2122 122 0939</span>
             <span>روبیکا : <a href="https://rubika.ir/jonub_supplement">jonub_supplement</a></span>
@@ -258,17 +237,15 @@
 
 <script>
     (function() {
-        // دکمه لیست قیمت: با کلیک، فایل PDF دانلود می‌شود
+
         const priceBtn = document.getElementById('priceListBtn');
         
-        // تابع دانلود فایل PDF
+       
         function downloadPricePDF() {
-            // ==============================================================
-            // لطفا آدرس دقیق فایل PDF لیست قیمت خود را در متغیر زیر وارد کنید
-            // ==============================================================
-            const pdfUrl = "price_list.pdf";  // <--- آدرس PDF خود را اینجا قرار دهید
+      
+            const pdfUrl = "price_list.pdf";  
             
-            // ایجاد یک عنصر <a> مخفی برای دانلود
+          
             const link = document.createElement('a');
             link.href = pdfUrl;
             link.download = "لیست_قیمت_مکمل.pdf";
