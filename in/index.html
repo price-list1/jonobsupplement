@@ -111,44 +111,27 @@
             box-shadow: 0 2px 0 0 #7e4a1a;
         }
 
-        /* بخش آیکون‌های واتساپ و روبیکا و شماره فروشگاه (خیلی ریز) */
-        .social-mini {
+        /* دکمه بازگشت به اینستاگرام */
+        .instagram-btn {
             margin-top: 8px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            font-size: 0.68rem;
-            color: #4a3b2a;
-            background: #fff8ef;
-            padding: 8px 12px;
-            border-radius: 50px;
             display: inline-flex;
-            width: auto;
-            backdrop-filter: blur(2px);
-            font-weight: 500;
-            flex-wrap: wrap;
-        }
-
-        .social-mini span {
-            display: flex;
             align-items: center;
-            gap: 5px;
-            font-size: 0.7rem;
-            letter-spacing: 0.2px;
+            justify-content: center;
+            gap: 8px;
+            width: auto;
+            padding: 10px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            box-shadow: 0 6px 14px rgba(188, 24, 136, 0.35);
+            transition: 0.2s;
         }
 
-        /* آیکون‌های ساده یونیکد برای واتساپ، روبیکا و تلفن */
-        .social-mini span:first-child::before {
-            content: "📱 ";
-            font-size: 0.8rem;
-        }
-        .social-mini span:nth-child(2)::before {
-            content: "📘 ";
-            font-size: 0.8rem;
-        }
-        .social-mini span:nth-child(3)::before {
-            content: "🏪 ";
-            font-size: 0.8rem;
+        .instagram-btn:active {
+            transform: translateY(2px);
         }
 
         /* ساعت پشتیبانی فروش */
@@ -185,9 +168,9 @@
                 font-size: 1.3rem;
                 width: 90%;
             }
-            .social-mini {
-                gap: 14px;
-                font-size: 0.6rem;
+            .instagram-btn {
+                font-size: 0.75rem;
+                padding: 9px 18px;
             }
             .support-hours {
                 font-size: 0.65rem;
@@ -224,12 +207,7 @@
 
         <button class="price-btn" id="priceListBtn">📋 لیست قیمت</button>
 
-         <div class="social-mini">
-            <span>واتساپ : 2122 122 0939</span>
-            <span>روبیکا : <a href="https://rubika.ir/jonub_supplement">jonub_supplement</a></span>
-             <span> <a href="https://whatsapp.com/channel/0029VamddcTGzzKMC30eKh36">کانال واتساپ</a></span>
-            <span>شماره فروشگاه : 9147 313 0773</span>
-        </div>
+        <a class="instagram-btn" href="https://www.instagram.com/jonub_supplement/?hl=fa" target="_blank" rel="noopener noreferrer">📷 برگشت به اینستاگرام</a>
         
         <!-- ساعت پشتیبانی فروش (9:30-2 و 17:30-20) -->
         <div class="support-hours">
